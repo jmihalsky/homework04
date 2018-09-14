@@ -78,7 +78,7 @@ var luke = {
     name: "Luke Skywalker",
     health: 100,
     attack: 5,
-    counterattack: 5,
+    counterattack: 8,
     clss: "luke",
     char_image: "assets/images/starwars/lukeskywalker.jpg"
 };
@@ -87,7 +87,7 @@ var obiwan = {
     name: "Obi-Wan Kenobi",
     health: 120,
     attack: 8,
-    counterattack: 8,
+    counterattack: 11,
     clss: "obiwan",
     char_image: "assets/images/starwars/obiwankenobi.jpg"
 };
@@ -96,7 +96,7 @@ var darthsidious = {
     name: "Darth Sidious",
     health: 150,
     attack: 20,
-    counterattack: 20,
+    counterattack: 15,
     clss: "darthsidious",
     char_image: "assets/images/starwars/darthsidious.jpg"
 };
@@ -105,7 +105,7 @@ var darthmaul = {
     name: "Darth Maul",
     health: 180,
     attack: 25,
-    counterattack: 25,
+    counterattack: 18,
     clss: "darthmaul",
     char_image: "assets/images/starwars/darthmaul.png"
 };
@@ -264,11 +264,14 @@ $(".darthmaul").on("click", function(){
 
 $(".attack").on("click", function(){
     if( fight === true){
-        var sel_dam;
-        var def_dam;
+        var sel_dam = 0;
+        var def_dam = 0;
         sel_dam = sltChar.health - sltDef.attack;
-        $("." + sltChar.clss , ".charhealth").text(sel_dam);
+        sltChar.health = sel_dam;
+        $("." + sltChar.clss).find(".charhealth").text(sel_dam);
         def_dam = sltDef.health - sltChar.attack;
+        sltDef.health = def_dam;
+        $("." + sltDef.clss).find(".charhealth").text(def_dam);
         attack_msg();
         sltChar.attack = sltChar.attack * 2;
         console.log(sltChar.attack);
@@ -281,12 +284,20 @@ $(".attack").on("click", function(){
 });
 
 function game_chk(){
+    console.log(sltDef.health);
     if(sltChar.health <= 0)
     {
+        fight = false;
 
     }
     else if (sltDef.health <= 0)
-    {
+    {   
+        fight = false;
+        sltDef = {};
+        $(".atk-msg-1").text("You won! Select another opponent.");
+        $(".atk-msg-2").empty();
+        $(".def-char").empty();
+
 
     }
 }
