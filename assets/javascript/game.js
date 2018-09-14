@@ -72,6 +72,7 @@ function jewel_validate(){
 var charArry = ["luke","obiwan","darthsidious","darthmaul"];
 var sltChar = {};
 var sltDef = {};
+var fight = false;
 
 var luke = {
     name: "Luke Skywalker",
@@ -202,6 +203,7 @@ $(".obiwan").on("click", function(){
     else if (jQuery.isEmptyObject(sltDef))
     {
         sltDef = obiwan;
+        fight = true;
         $(".def-char").append($(this));
     }
 
@@ -219,6 +221,7 @@ $(".luke").on("click", function(){
     else if (jQuery.isEmptyObject(sltDef))
     {
         sltDef = luke;
+        fight = true;
         $(".def-char").append($(this));
     }
 
@@ -236,6 +239,7 @@ $(".darthsidious").on("click", function(){
     else if (jQuery.isEmptyObject(sltDef))
     {
         sltDef = darthsidious;
+        fight = true;
         $(".def-char").append($(this));
     }
 });
@@ -252,9 +256,42 @@ $(".darthmaul").on("click", function(){
     else if (jQuery.isEmptyObject(sltDef))
     {
         sltDef = darthmaul;
+        fight = true;
         $(".def-char").append($(this));
     }
 
 });
 
+$(".attack").on("click", function(){
+    if( fight === true){
+        var sel_dam;
+        var def_dam;
+        sel_dam = sltChar.health - sltDef.attack;
+        $("." + sltChar.clss , ".charhealth").text(sel_dam);
+        def_dam = sltDef.health - sltChar.attack;
+        attack_msg();
+        sltChar.attack = sltChar.attack * 2;
+        console.log(sltChar.attack);
+        game_chk();
+    }
+    else
+    {
 
+    }
+});
+
+function game_chk(){
+    if(sltChar.health <= 0)
+    {
+
+    }
+    else if (sltDef.health <= 0)
+    {
+
+    }
+}
+
+function attack_msg(){
+    $(".atk-msg-1").text("You attacked " + sltDef.name + " for " + sltChar.attack + " damage.");
+    $(".atk-msg-2").text(sltDef.name + " attacked you back for " + sltDef.attack + " damage.");
+}
