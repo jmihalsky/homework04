@@ -71,6 +71,7 @@ function jewel_validate(){
 // StarWars RPG Code
 var charArry = ["luke","obiwan","darthsidious","darthmaul"];
 var sltChar = {};
+var sltDef = {};
 
 var luke = {
     name: "Luke Skywalker",
@@ -194,6 +195,14 @@ $(".obiwan").on("click", function(){
     {
         sltChar = obiwan;
         $(".sel-char").append($(this));
+        $(".sel-enem").append($(".luke"));
+        $(".sel-enem").append($(".darthsidious"));
+        $(".sel-enem").append($(".darthmaul"));
+    }
+    else if (jQuery.isEmptyObject(sltDef))
+    {
+        sltDef = obiwan;
+        $(".def-char").append($(this));
     }
 
 });
@@ -203,6 +212,14 @@ $(".luke").on("click", function(){
     {
         sltChar = luke;
         $(".sel-char").append($(this));
+        $(".sel-enem").append($(".obiwan"));
+        $(".sel-enem").append($(".darthsidious"));
+        $(".sel-enem").append($(".darthmaul"));
+    }
+    else if (jQuery.isEmptyObject(sltDef))
+    {
+        sltDef = luke;
+        $(".def-char").append($(this));
     }
 
 });
@@ -212,8 +229,15 @@ $(".darthsidious").on("click", function(){
     {
         sltChar = darthsidious;
         $(".sel-char").append($(this));
+        $(".sel-enem").append($(".obiwan"));
+        $(".sel-enem").append($(".luke"));
+        $(".sel-enem").append($(".darthmaul"));
     }
-
+    else if (jQuery.isEmptyObject(sltDef))
+    {
+        sltDef = darthsidious;
+        $(".def-char").append($(this));
+    }
 });
 
 $(".darthmaul").on("click", function(){
@@ -221,6 +245,16 @@ $(".darthmaul").on("click", function(){
     {
         sltChar = darthmaul;
         $(".sel-char").append($(this));
+        $(".sel-enem").append($(".obiwan"));
+        $(".sel-enem").append($(".luke"));
+        $(".sel-enem").append($(".darthsidious"));
+    }
+    else if (jQuery.isEmptyObject(sltDef))
+    {
+        sltDef = darthmaul;
+        $(".def-char").append($(this));
     }
 
 });
+
+
