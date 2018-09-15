@@ -10,6 +10,7 @@ var usrNum = 0;
 var wins = 0;
 var losses = 0;
 
+
 // Generate random number between 55 and 150 that user will add numbers up against.
 function rndo(){
  var rndnum_temp = MinVal+(Math.random()*(MaxVal-MinVal));
@@ -73,43 +74,51 @@ var charArry = ["luke","obiwan","darthsidious","darthmaul"];
 var sltChar = {};
 var sltDef = {};
 var fight = false;
+var kills = 0;
+var killArry = [];
 
+// character objects
 var luke = {
     name: "Luke Skywalker",
+    start_health: 100,
     health: 100,
     attack: 5,
-    counterattack: 8,
+    counterattack: 5,
     clss: "luke",
     char_image: "assets/images/starwars/lukeskywalker.jpg"
 };
 
 var obiwan = {
     name: "Obi-Wan Kenobi",
+    start_health: 120,
     health: 120,
     attack: 8,
-    counterattack: 11,
+    counterattack: 8,
     clss: "obiwan",
     char_image: "assets/images/starwars/obiwankenobi.jpg"
 };
 
 var darthsidious = {
     name: "Darth Sidious",
+    start_health: 150,
     health: 150,
     attack: 20,
-    counterattack: 15,
+    counterattack: 20,
     clss: "darthsidious",
     char_image: "assets/images/starwars/darthsidious.jpg"
 };
 
 var darthmaul = {
     name: "Darth Maul",
+    start_health: 180,
     health: 180,
     attack: 25,
-    counterattack: 18,
+    counterattack: 25,
     clss: "darthmaul",
     char_image: "assets/images/starwars/darthmaul.png"
 };
 
+// create charater buttons on the DOM
 function set_avail_chars(){
 addObiWan();
 addLuke();
@@ -117,9 +126,10 @@ addDarthSidious();
 addDarthMaul();
 }
 
+// character creation code.
 function addObiWan(){
     var char_col = $("<div>");
-    char_col.addClass("col-xs-6 col-sm-6 col-md-2 " + obiwan.clss);
+    char_col.addClass("col-xs-6 col-sm-6 col-md-2 avail " + obiwan.clss);
     $(".avail-chars").append(char_col);
 
     var char_name = $("<div>");
@@ -137,7 +147,7 @@ function addObiWan(){
 
 function addLuke(){
     var char_col = $("<div>");
-    char_col.addClass("col-xs-6 col-sm-6 col-md-2 " + luke.clss);
+    char_col.addClass("col-xs-6 col-sm-6 col-md-2 avail " + luke.clss);
     $(".avail-chars").append(char_col);
 
     var char_name = $("<div>");
@@ -155,7 +165,7 @@ function addLuke(){
 
 function addDarthSidious(){
     var char_col = $("<div>");
-    char_col.addClass("col-xs-6 col-sm-6 col-md-2 " + darthsidious.clss);
+    char_col.addClass("col-xs-6 col-sm-6 col-md-2 avail " + darthsidious.clss);
     $(".avail-chars").append(char_col);
 
     var char_name = $("<div>");
@@ -173,7 +183,7 @@ function addDarthSidious(){
 
 function addDarthMaul(){
     var char_col = $("<div>");
-    char_col.addClass("col-xs-6 col-sm-6 col-md-2 " + darthmaul.clss);
+    char_col.addClass("col-xs-6 col-sm-6 col-md-2 avail " + darthmaul.clss);
     $(".avail-chars").append(char_col);
 
     var char_name = $("<div>");
@@ -197,14 +207,27 @@ $(".obiwan").on("click", function(){
         sltChar = obiwan;
         $(".sel-char").append($(this));
         $(".sel-enem").append($(".luke"));
+
+        $(".luke").removeClass("avail");
+        $(".luke").addClass("enemy");
+
         $(".sel-enem").append($(".darthsidious"));
+
+        $(".darthsidious").removeClass("avail");
+        $(".darthsidious").addClass("enemy");
+
         $(".sel-enem").append($(".darthmaul"));
+
+        $(".darthmaul").removeClass("avail");
+        $(".darthmaul").addClass("enemy");
     }
     else if (jQuery.isEmptyObject(sltDef))
     {
         sltDef = obiwan;
         fight = true;
         $(".def-char").append($(this));
+        $(".obiwan").removeClass("enemy");
+        $(".obiwan").addClass("fighter");
     }
 
 });
@@ -215,14 +238,27 @@ $(".luke").on("click", function(){
         sltChar = luke;
         $(".sel-char").append($(this));
         $(".sel-enem").append($(".obiwan"));
+
+        $(".obiwan").removeClass("avail");
+        $(".obiwan").addClass("enemy");
+
         $(".sel-enem").append($(".darthsidious"));
+
+        $(".darthsidious").removeClass("avail");
+        $(".darthsidious").addClass("enemy");
+
         $(".sel-enem").append($(".darthmaul"));
+
+        $(".darthmaul").removeClass("avail");
+        $(".darthmaul").addClass("enemy");
     }
     else if (jQuery.isEmptyObject(sltDef))
     {
         sltDef = luke;
         fight = true;
         $(".def-char").append($(this));
+        $(".luke").removeClass("enemy");
+        $(".luke").addClass("fighter");
     }
 
 });
@@ -233,14 +269,27 @@ $(".darthsidious").on("click", function(){
         sltChar = darthsidious;
         $(".sel-char").append($(this));
         $(".sel-enem").append($(".obiwan"));
+
+        $(".obiwan").removeClass("avail");
+        $(".obiwan").addClass("enemy");
+
         $(".sel-enem").append($(".luke"));
+
+        $(".luke").removeClass("avail");
+        $(".luke").addClass("enemy");
+
         $(".sel-enem").append($(".darthmaul"));
+
+        $(".darthmaul").removeClass("avail");
+        $(".darthmaul").addClass("enemy");
     }
     else if (jQuery.isEmptyObject(sltDef))
     {
         sltDef = darthsidious;
         fight = true;
         $(".def-char").append($(this));
+        $(".darthsidious").removeClass("enemy");
+        $(".darthsidious").addClass("fighter");
     }
 });
 
@@ -250,18 +299,32 @@ $(".darthmaul").on("click", function(){
         sltChar = darthmaul;
         $(".sel-char").append($(this));
         $(".sel-enem").append($(".obiwan"));
+
+        $(".obiwan").removeClass("avail");
+        $(".obiwan").addClass("enemy");
+
         $(".sel-enem").append($(".luke"));
+
+        $(".luke").removeClass("avail");
+        $(".luke").addClass("enemy");
+
         $(".sel-enem").append($(".darthsidious"));
+
+        $(".darthsidious").removeClass("avail");
+        $(".darthsidious").addClass("enemy");
     }
     else if (jQuery.isEmptyObject(sltDef))
     {
         sltDef = darthmaul;
         fight = true;
         $(".def-char").append($(this));
+        $(".darthmaul").removeClass("enemy");
+        $(".darthmaul").addClass("fighter");
     }
 
 });
 
+// attack function
 $(".attack").on("click", function(){
     if( fight === true){
         var sel_dam = 0;
@@ -273,7 +336,7 @@ $(".attack").on("click", function(){
         sltDef.health = def_dam;
         $("." + sltDef.clss).find(".charhealth").text(def_dam);
         attack_msg();
-        sltChar.attack = sltChar.attack * 2;
+        sltChar.attack = sltChar.attack + sltChar.counterattack;
         console.log(sltChar.attack);
         game_chk();
     }
@@ -283,26 +346,77 @@ $(".attack").on("click", function(){
     }
 });
 
+$(".game-reset").on("click", function(){
+    resetA();
+});
+
 function game_chk(){
     console.log(sltDef.health);
     if(sltChar.health <= 0)
     {
         fight = false;
+        sltChar = {};
+        sltDef = {};
+        $(".atk-msg-1").text("You lose. Hit the Reset Button and try again.");
+        $(".atk-msg-2").empty();
+        $(".game-reset").append("<button class-'btn btn-primary game-reset'>Reset</button>");
 
     }
     else if (sltDef.health <= 0)
     {   
-        fight = false;
-        sltDef = {};
-        $(".atk-msg-1").text("You won! Select another opponent.");
-        $(".atk-msg-2").empty();
-        $(".def-char").empty();
-
+        if (kills < 4){
+            fight = false;
+            // $(".defeated").append($("." + sltDef.clss));
+            killArry.push(sltDef.clss);
+            sltDef = {};
+            $(".atk-msg-1").text("You won! Select another opponent.");
+            $(".atk-msg-2").empty();
+            $(".fighter").remove();
+            
+        }
+        else
+        {
+            fight = false;
+            $(".atk-msg-1").text("You won the game! Hit the reset button to play again.");
+            $(".atk-msg-2").empty();
+            $(".game-reset").append("<button class-'btn btn-primary game-reset'>Reset</button>");
+        }
 
     }
 }
 
+// messaging function
 function attack_msg(){
     $(".atk-msg-1").text("You attacked " + sltDef.name + " for " + sltChar.attack + " damage.");
     $(".atk-msg-2").text(sltDef.name + " attacked you back for " + sltDef.attack + " damage.");
+}
+
+// reset game
+function resetA(){
+    sltChar = {};
+    sltDef = {};
+    // $(".sel-char").empty();
+    // $(".sel-enem").empty();
+    // $(".def-char").empty();
+    // $(".game-reset").empty();
+    // $(".atk-msg-1").empty();
+    // $(".atk-msg-2").empty();
+    // $(".avail-chars").empty();
+    $(".avail").remove();
+    $(".enemy").remove();
+    $(".fighter").remove();
+    obiwan.health = obiwan.start_health;
+    luke.health = luke.start_health;
+    darthsidious.health = darthsidious.start_health;
+    darthmaul.health = darthmaul.start_health;
+    console.log(sltChar);
+    set_avail_chars();
+    $(".atk-msg-1").empty();
+    $(".game-reset").remove();
+    // for(var i = 0; i < killArry.length; i++)
+    // {
+    //     $(".avail-chars").append($("." + killArry[i]));
+    // }
+    
+    
 }

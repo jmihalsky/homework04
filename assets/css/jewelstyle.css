@@ -1,0 +1,83 @@
+body{
+    background: url("../images/crystalgame/background.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.head{
+    font-family: 'Pacifico', cursive;
+    text-align: center;
+    font-size: 4rem;
+    height: auto;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.inst{
+    background-color: #F5CBA7;
+}
+
+#rando{
+    background-color: #FFFFFF;
+    font-family: 'Pacifico', cursive;
+    font-size: 4rem;
+    text-align: center;
+    margin: 10px 5px 10px 0px;
+}
+
+#score{
+    background-color: #33F9FF;
+    font-family: 'Cabin', sans-serif;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+    margin: 10px 0px 10px 5px;
+}
+
+.btn-primary{
+    background-color: #FFFFFF !important;
+    width: 90px;
+    height: 90px;
+}
+
+#j1{
+    background: url("../images/crystalgame/blue.png");
+    background-repeat: no-repeat;
+}
+
+#j2{
+    background: url("../images/crystalgame/green.png");
+    background-repeat: no-repeat;
+}
+
+#j3{
+    background: url("../images/crystalgame/red.png");
+    background-repeat: no-repeat;
+}
+
+#j4{
+    background: url("../images/crystalgame/yellow.png");
+    background-repeat: no-repeat;
+}
+
+#btns{
+    margin-bottom: 10px;
+}
+
+#num1{
+    font-family: 'Cabin', sans-serif;
+    font-size: 2rem;
+    background-color: #0F8B69;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#usrscore{
+    height: 80px;
+    font-family: 'Cabin', sans-serif;
+    font-size: 3rem;
+    text-align: center;
+    background-color: #0F8B69;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}

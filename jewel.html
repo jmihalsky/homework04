@@ -12,22 +12,46 @@
 
     <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
 
-    
+    <link href="https://fonts.googleapis.com/css?family=Cabin|Pacifico" rel="stylesheet">
 
+    <link rel="stylesheet" type="text/css" href="assets/css/jewelstyle.css">
 </head>
 <body>
-    <header></header>
+    <header>
+        <nav class="navbar navbar-light navbar-expand-sm">
+            <div class="container">
+                <a class="navbar-brand" href="#"></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation" >
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="navbar-item active">
+                            <a class="nav-link" href="index.html" class="nav-link">Game Menu</a>
+                        </li>
+                        <li class="navbar-item active">
+                            <a class="nav-link" href="starwars.html" class="nav-link">Star Wars RPG</a>
+                        </li>
+                    </ul>
+            </div>
+        </nav>
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 head">Crystals Collector</div>
+            </div>
+        </div>
+    </header>
     <div class="container">
         <div class="row">
-            <div class="col-md-3"></div>
-            <div class="col-xs-12 col-sm-12 col-md-6">
+            <div class="col-xs-1 col-sm-1 col-md-3"></div>
+            <div class="col-xs-10 col-sm-10 col-md-6 inst">
                 <p>You will be given a random number at the start of the game.</p>
                 <p>There are four crystals below. By clicking on a crystal you will add a specific amount of points to your total score.</p>
                 <p>You win the game by matching your total score to the random number. You lose if your total score goes above the random number.</p>
                 <p>The value of each crystal is hidden from you until you click on it.</p>
                 <p>The value of the crystals is changed each time a new game is started.</p>
             </div>
-            <div class="col-md-3"></div>
+            <div class="col-xs-1 col-sm-1 col-md-3"></div>
         </div>
         <div class="row">
             <div class="col-md-3"></div>
@@ -49,24 +73,24 @@
             <div class="col-md-3"></div>
         </div>
         <div class="row">
-            <div class="col-md-3"></div>
-            <div class="col-xs-12 col-sm-12 col-md-6">
-                <button class="btn btn-primary jewel" value="0">Jewel 1</button>
-                <button class="btn btn-primary jewel" value="1">Jewel 2</button>
-                <button class="btn btn-primary jewel" value="2">Jewel 3</button>
-                <button class="btn btn-primary jewel" value="3">Jewel 4</button>
+            <div class="col-md-4"></div>
+            <div id="btns" class="col-xs-12 col-sm-12 col-md-5">
+                <button id="j1" class="btn btn-primary jewel" value="0"></button>
+                <button id="j2" class="btn btn-primary jewel" value="1"></button>
+                <button id="j3" class="btn btn-primary jewel" value="2"></button>
+                <button id="j4" class="btn btn-primary jewel" value="3"></button>
             </div>
             <div class="col-md-3"></div>
         </div>
         <div class="row">
             <div class="col-md-3"></div>
-            <div class="col-xs-12 col-sm-12 col-md-6">Your Score:</div>
-            <div class="col-md-3"></div>
+            <div id="num1" class="col-xs-6 col-sm-6 col-md-3">Your Score:</div>
+            <div class="col-md-6"></div>
         </div>
         <div class="row">
             <div class="col-md-3"></div>
-            <div id="usrscore" class="col-xs-7 col-sm-7 col-md-3"></div>
-            <div class="col-xs-5 col-sm-5 col-md-6"></div>
+            <div id="usrscore" class="col-xs-6 col-sm-6 col-md-3"></div>
+            <div class="col-xs-6 col-sm-6 col-md-6"></div>
         </div>
     </div>
     <footer></footer>
